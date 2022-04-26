@@ -1,13 +1,20 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Personal from "../components/forms/Personal";
+import Contact from "../components/forms/Contact";
 
 const Dashboard = () => {
   const [tabs, setTabs] = useState(1);
+  const { register, handleSubmit } = useForm();
 
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-sm">
-          <button className="btn btn-primary">Retrieve Info</button>
+        <div className="col-sm-3 mt-1">
+          <p class="h2">SingPass Test App</p>
+        </div>
+        <div className="col-sm-2 mt-2">
+          <button className="btn btn-primary fs-5">Retrieve Info</button>
         </div>
       </div>
       <div className="row">
@@ -43,6 +50,13 @@ const Dashboard = () => {
               </a>
             </li>
           </ul>
+          {tabs == 1 ? (
+            <Contact register={register}></Contact>
+          ) : tabs == 3 ? (
+            <Personal register={register} />
+          ) : (
+            <div />
+          )}
         </div>
       </div>
     </div>

@@ -3,93 +3,96 @@ const Contact = (props) => {
   return (
     <form>
       <div className="mt-3">
-        <div className="h4">Personal Info</div>
+        <div className="h4">Contact Info</div>
         <div className="mb-3">
-          <label for="nric" className="form-label">
-            NRIC
+          <label for="mobileNumber" className="form-label">
+            Mobile Number
           </label>
           <input
             type="text"
             className="form-control"
-            id="nric"
-            {...register("nric")}
+            id="mobileNumber"
+            {...register("mobileNumber")}
           />
         </div>
         <div className="mb-3">
-          <label for="name" className="form-label">
-            Name
+          <label for="email" className="form-label">
+            Email Address
           </label>
           <input
             type="text"
             className="form-control"
-            id="name"
-            {...register("name")}
+            id="email"
+            {...register("email")}
+          />
+        </div>
+      </div>
+      <div className="mt-3">
+        <div className="h4">Registered Address</div>
+        <div className="mb-3">
+          <label for="blockNumber" className="form-label">
+            Block Number
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="blockNumber"
+            {...register("blockNumber")}
           />
         </div>
         <div className="mb-3">
-          <label for="sex" className="form-label">
-            Sex
+          <label for="streetName" className="form-label">
+            Street Name
           </label>
           <input
             type="text"
             className="form-control"
-            id="sex"
-            {...register("sex")}
+            id="streetName"
+            {...register("streetName")}
           />
         </div>
         <div className="mb-3">
-          <label for="dateOfBirth" className="form-label">
-            Date of Birth
+          <label for="buildingName" className="form-label">
+            Building Name
           </label>
           <input
             type="text"
             className="form-control"
-            id="dateOfBirth"
-            {...register("dateOfBirth")}
+            id="buildingName"
+            {...register("buildingName")}
           />
         </div>
         <div className="mb-3">
-          <label for="country" className="form-label">
-            Country of Birth
+          <label for="unitNo" className="form-label">
+            Unit No
           </label>
           <input
             type="text"
             className="form-control"
-            id="country"
-            {...register("country")}
+            id="unitNo"
+            {...register("unitNo")}
           />
         </div>
         <div className="mb-3">
-          <label for="residentialStatus" className="form-label">
-            Residential Status
+          <label for="postalCode" className="form-label">
+            Postal Code
           </label>
           <input
             type="text"
             className="form-control"
-            id="residentialStatus"
-            {...register("residentialStatus")}
+            id="postalCode"
+            {...register("postalCode")}
           />
         </div>
         <div className="mb-3">
-          <label for="nationality" className="form-label">
-            Nationality
+          <label for="housingType" className="form-label">
+            Type of Housing
           </label>
           <input
             type="text"
             className="form-control"
-            id="nationality"
-            {...register("nationality")}
-          />
-        </div>
-        <div className="mb-3">
-          <label for="race" className="form-label">
-            Race
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="race"
-            {...register("race")}
+            id="housingType"
+            {...register("housingType")}
           />
         </div>
       </div>
