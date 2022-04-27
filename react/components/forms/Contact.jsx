@@ -5,14 +5,14 @@ const Contact = (props) => {
       <div className="mt-3">
         <div className="h4">Contact Info</div>
         <div className="mb-3">
-          <label for="mobileNumber" className="form-label">
+          <label for="mobileno" className="form-label">
             Mobile Number
           </label>
           <input
             type="text"
             className="form-control"
-            id="mobileNumber"
-            {...register("mobileNumber")}
+            id="mobileno"
+            {...register("mobileno")}
           />
         </div>
         <div className="mb-3">
@@ -30,36 +30,36 @@ const Contact = (props) => {
       <div className="mt-3">
         <div className="h4">Registered Address</div>
         <div className="mb-3">
-          <label for="blockNumber" className="form-label">
+          <label for="block" className="form-label">
             Block Number
           </label>
           <input
             type="text"
             className="form-control"
-            id="blockNumber"
-            {...register("blockNumber")}
+            id="block"
+            {...register("block")}
           />
         </div>
         <div className="mb-3">
-          <label for="streetName" className="form-label">
+          <label for="street" className="form-label">
             Street Name
           </label>
           <input
             type="text"
             className="form-control"
-            id="streetName"
-            {...register("streetName")}
+            id="street"
+            {...register("street")}
           />
         </div>
         <div className="mb-3">
-          <label for="buildingName" className="form-label">
+          <label for="building" className="form-label">
             Building Name
           </label>
           <input
             type="text"
             className="form-control"
-            id="buildingName"
-            {...register("buildingName")}
+            id="building"
+            {...register("building")}
           />
         </div>
         <div className="mb-3">
@@ -74,14 +74,14 @@ const Contact = (props) => {
           />
         </div>
         <div className="mb-3">
-          <label for="postalCode" className="form-label">
+          <label for="postal" className="form-label">
             Postal Code
           </label>
           <input
             type="text"
             className="form-control"
-            id="postalCode"
-            {...register("postalCode")}
+            id="postal"
+            {...register("postal")}
           />
         </div>
         <div className="mb-3">

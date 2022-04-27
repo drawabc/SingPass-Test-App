@@ -38,14 +38,14 @@ const Personal = (props) => {
           />
         </div>
         <div className="mb-3">
-          <label for="dateOfBirth" className="form-label">
+          <label for="dob" className="form-label">
             Date of Birth
           </label>
           <input
             type="text"
             className="form-control"
-            id="dateOfBirth"
-            {...register("dateOfBirth")}
+            id="dob"
+            {...register("dob")}
           />
         </div>
         <div className="mb-3">

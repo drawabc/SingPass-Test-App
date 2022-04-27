@@ -68,10 +68,9 @@ def generate_authorization_header(url, params, method, app_id):
         f'signature="{signature}"'
     )
 
-
 def get_decoded_access_token(access_token: str) -> dict:
     return jwt.decode(
-        access_token, myinfo_public_key, algorithms=["RS256"], options={"verify_aud": False}
+        access_token, myinfo_public_key, algorithms=["RS256"], options={"verify_aud": False, "verify_nbf":False}
     )
 
 

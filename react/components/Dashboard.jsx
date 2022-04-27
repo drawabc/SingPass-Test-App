@@ -6,6 +6,7 @@ import Contact from "../components/forms/Contact";
 const Dashboard = () => {
   const [tabs, setTabs] = useState(1);
   const { register, handleSubmit } = useForm();
+  const redirect = () => {};
 
   return (
     <div className="container-fluid">
@@ -14,7 +15,9 @@ const Dashboard = () => {
           <p class="h2">SingPass Test App</p>
         </div>
         <div className="col-sm-2 mt-2">
-          <button className="btn btn-primary fs-5">Retrieve Info</button>
+          <button className="btn btn-primary fs-5" onClick={redirect}>
+            Retrieve Info
+          </button>
         </div>
       </div>
       <div className="row">
