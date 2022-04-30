@@ -82,12 +82,14 @@ const Income = (props) => {
                 <th>Employer</th>
               </tr>
             </thead>
-            <tr>
-              <td>March</td>
-              <td>March</td>
-              <td>March</td>
-              <td>March</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>March</td>
+                <td>March</td>
+                <td>March</td>
+                <td>March</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
