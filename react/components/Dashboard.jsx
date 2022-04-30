@@ -5,8 +5,19 @@ import Contact from "../components/forms/Contact";
 
 const Dashboard = () => {
   const [tabs, setTabs] = useState(1);
-  const { register, handleSubmit } = useForm();
-  const redirect = () => {};
+  const { register, handleSubmit, setValue } = useForm();
+  const redirect = async () => {
+    const response = await fetch(
+      "http://localhost:8000/api/get_authorised_url",
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        window.location = res.url;
+      });
+  };
 
   return (
     <div className="container-fluid">
