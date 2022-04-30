@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Personal from "../components/forms/Personal";
 import Contact from "../components/forms/Contact";
 import { useRouter } from "next/router";
+import Income from "../components/forms/Income";
 
 const Dashboard = () => {
   const [tabs, setTabs] = useState(1);
@@ -62,7 +63,7 @@ const Dashboard = () => {
       </div>
       <div className="row">
         <div className="col-lg">
-          <p className="fs-3">Contact Details</p>
+          <p className="fs-3">Details</p>
         </div>
       </div>
       <div className="row">
@@ -95,6 +96,8 @@ const Dashboard = () => {
           </ul>
           {tabs == 1 ? (
             <Contact register={contact.register} />
+          ) : tabs == 2 ? (
+            <Income />
           ) : tabs == 3 ? (
             <Personal register={personal.register} />
           ) : (
