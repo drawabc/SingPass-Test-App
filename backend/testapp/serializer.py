@@ -12,14 +12,14 @@ def serialize(user_info):
             "race": get_dct(user_info, "race", "desc"),
         },
         "contact":{
-            "mobileno": get_dct(user_info, "mobileno", "nbr"),
+            "mobileno": get_dct(user_info, "mobileno", "nbr").get("value", ""),
             "email": get_dct(user_info, "email", "value"),
             "block": get_dct(regadd, "block", "value"),
             "street": get_dct(regadd, "street", "value"),
             "building": get_dct(regadd, "building", "value"),
             "unitNo" : get_dct(regadd, "floor", "value") + "-" + get_dct(regadd, "unit", "value"),
             "postal": get_dct(regadd, "postal", "value"),
-            "housingType": get_dct(regadd, "hdbtype", "desc"),
+            "housingType": get_dct(user_info, "hdbtype", "desc"),
         },
         "income":{
             "cpfbalance": user_info.get("cpfbalances", {}),

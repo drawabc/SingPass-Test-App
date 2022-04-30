@@ -6,7 +6,9 @@ import { useRouter } from "next/router";
 
 const Dashboard = () => {
   const [tabs, setTabs] = useState(1);
-  const { register, handleSubmit, setValue } = useForm();
+  const contact = useForm();
+  const personal = useForm();
+  const [income, setIncome] = useState({});
   const router = useRouter();
   const { slug, code, state } = router.query;
 
@@ -26,6 +28,8 @@ const Dashboard = () => {
         })
         .then((res) => {
           console.log(res);
+          contact.reset(res.contact);
+          personal.reset(res.personal);
         })
         .catch((error) => console.log(error));
     }
@@ -48,7 +52,7 @@ const Dashboard = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-sm-3 mt-1">
-          <p class="h2">SingPass Test App</p>
+          <p className="h2">SingPass Test App</p>
         </div>
         <div className="col-sm-2 mt-2">
           <button className="btn btn-primary fs-5" onClick={redirect}>
@@ -58,7 +62,7 @@ const Dashboard = () => {
       </div>
       <div className="row">
         <div className="col-lg">
-          <p class="fs-3">Contact Details</p>
+          <p className="fs-3">Contact Details</p>
         </div>
       </div>
       <div className="row">
@@ -90,9 +94,9 @@ const Dashboard = () => {
             </li>
           </ul>
           {tabs == 1 ? (
-            <Contact register={register}></Contact>
+            <Contact register={contact.register} />
           ) : tabs == 3 ? (
-            <Personal register={register} />
+            <Personal register={personal.register} />
           ) : (
             <div />
           )}
