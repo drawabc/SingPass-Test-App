@@ -19,9 +19,10 @@ def get_authorised_url(request):
 @csrf_exempt
 @require_http_methods(["POST"])
 def get_info(request):
-    if (not request.POST["code"]):
+    req = json.loads(request.body)
+    if (not req["code"]):
         return JsonResponse({"message": "Code is empty"}, status=404)
-    code = request.POST.get("code", "")
+    code = req.get("code", "")
     resp = client.get_access_token(code)
     access_token = resp["access_token"]
     print(access_token)

@@ -1,3 +1,4 @@
+from email.policy import default
 import logging
 from json import JSONDecodeError
 from urllib.parse import quote, urlencode
@@ -6,7 +7,7 @@ from myinfo import settings
 from myinfo.security import generate_authorization_header
 
 log = logging.getLogger(__name__)
-
+default_callback_url = "http://localhost:3001/callback"
 
 class MyInfoClient(object):
     """
@@ -63,7 +64,7 @@ class MyInfoClient(object):
         # Otherwise, we would get this error:
         # `redirect_uri_mismatch The redirection URI provided does not match a pre-registered value.`
         if not callback_url:
-            callback_url = "http://localhost:3001/callback"
+            callback_url = default_callback_url
 
         api_url = f"{settings.MYINFO_ROOT}/token"
         params = {
@@ -109,7 +110,7 @@ class MyInfoClient(object):
         # Otherwise, we would get this error:
         # `redirect_uri_mismatch The redirection URI provided does not match a pre-registered value.`
         if not callback_url:
-            callback_url = "http://localhost:3001/callback"
+            callback_url = default_callback_url
 
         query = {
             "client_id": settings.MYINFO_CLIENT_ID,

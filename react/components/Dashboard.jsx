@@ -1,11 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Personal from "../components/forms/Personal";
 import Contact from "../components/forms/Contact";
+import { useRouter } from "next/router";
 
 const Dashboard = () => {
   const [tabs, setTabs] = useState(1);
   const { register, handleSubmit, setValue } = useForm();
+  const router = useRouter();
+  const { slug, code, state } = router.query;
+
+  useEffect(() => {
+    const get_info = async () => {
+      const response = await fetch("http://localhost:8000/api/get_info", {
+        method: "POST",
+        body: JSON.stringify({ code: code }),
+      });
+      return response;
+    };
+    if (typeof code === "string" || code instanceof String) {
+      get_info()
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => console.log(error));
+    }
+  });
+
   const redirect = async () => {
     const response = await fetch(
       "http://localhost:8000/api/get_authorised_url",
