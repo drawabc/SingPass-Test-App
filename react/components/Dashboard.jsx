@@ -28,11 +28,16 @@ const Dashboard = () => {
           return response.json();
         })
         .then((res) => {
-          console.log(res);
-          contact.reset(res.contact);
-          personal.reset(res.personal);
+          if (res != null) {
+            console.log(res);
+            contact.reset(res.contact);
+            personal.reset(res.personal);
+            setIncome(res.income);
+          }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error);
+        });
     }
   });
 
@@ -97,7 +102,7 @@ const Dashboard = () => {
           {tabs == 1 ? (
             <Contact register={contact.register} />
           ) : tabs == 2 ? (
-            <Income />
+            <Income income={income} />
           ) : tabs == 3 ? (
             <Personal register={personal.register} />
           ) : (
