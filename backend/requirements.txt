@@ -1,0 +1,16 @@
+asgiref==3.5.0
+certifi==2021.10.8
+cffi==1.15.0
+chardet==3.0.4
+cryptography==37.0.0
+Django==4.0.4
+django-cors-headers==3.11.0
+idna==2.10
+jwcrypto==0.7
+pycparser==2.21
+PyJWT==1.7.1
+requests==2.23.0
+six==1.16.0
+sqlparse==0.4.2
+tzdata==2022.1
+urllib3==1.25.11
