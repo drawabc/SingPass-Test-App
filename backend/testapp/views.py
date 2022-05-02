@@ -10,7 +10,7 @@ import json
 
 from django.views.decorators.csrf import csrf_exempt
 client = MyInfoClient()
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["GET"])
 def get_authorised_url(request):
     
     url = client.get_authorise_url(state="blabla")
