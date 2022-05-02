@@ -12,7 +12,7 @@ def serialize(user_info):
             "race": get_dct(user_info, "race", "desc"),
         },
         "contact":{
-            "mobileno": get_dct(user_info, "mobileno", "nbr").get("value", ""),
+            "mobileno": user_info.get("mobileno", {}).get("nbr", {}).get("value", ""),
             "email": get_dct(user_info, "email", "value"),
             "block": get_dct(regadd, "block", "value"),
             "street": get_dct(regadd, "street", "value"),
@@ -32,4 +32,4 @@ def serialize(user_info):
     return result
 
 def get_dct(dct, s1, s2):
-    return dct.get(s1, {}).get(s2)
+    return dct.get(s1, {}).get(s2, "")

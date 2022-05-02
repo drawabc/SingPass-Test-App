@@ -19,15 +19,18 @@ def get_authorised_url(request):
 @csrf_exempt
 @require_http_methods(["POST"])
 def get_info(request):
-    req = json.loads(request.body)
-    if (not req["code"]):
-        return JsonResponse({"message": "Code is empty"}, status=404)
-    code = req.get("code", "")
-    resp = client.get_access_token(code)
-    access_token = resp["access_token"]
-    print(access_token)
-    decoded_access_token = get_decoded_access_token(access_token)
-    uinfin = decoded_access_token["sub"]
-    resp = client.get_person(uinfin=uinfin, access_token=access_token)
-    decrypted = get_decrypted_person_data(resp)
-    return JsonResponse(serializer.serialize(decrypted))
+    try:
+        req = json.loads(request.body)
+        if (not req["code"]):
+            return JsonResponse({"message": "Code is empty"}, status=404)
+        code = req.get("code", "")
+        resp = client.get_access_token(code)
+        access_token = resp.get("access_token", "")
+        decoded_access_token = get_decoded_access_token(access_token)
+        uinfin = decoded_access_token["sub"]
+        resp = client.get_person(uinfin=uinfin, access_token=access_token)
+        decrypted = get_decrypted_person_data(resp)
+        return JsonResponse(serializer.serialize(decrypted))
+    except:
+        #print(e)
+        return JsonResponse(serializer.serialize({}), status=404)

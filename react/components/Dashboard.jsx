@@ -13,33 +13,35 @@ const Dashboard = () => {
   const router = useRouter();
   const { slug, code, state } = router.query;
 
-  useEffect(() => {
-    const get_info = async () => {
-      const response = await fetch("http://localhost:8000/api/get_info", {
-        method: "POST",
-        body: JSON.stringify({ code: code }),
+  const get_info = async () => {
+    const response = await fetch("http://localhost:8000/api/get_info", {
+      method: "POST",
+      body: JSON.stringify({ code: code }),
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((res) => {
+        if (res != null) {
+          console.log(res);
+          contact.reset(res.contact);
+          personal.reset(res.personal);
+          setIncome(res.income);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      return response;
-    };
-    if (typeof code === "string" || code instanceof String) {
-      get_info()
-        .then((response) => {
-          console.log(response);
-          return response.json();
-        })
-        .then((res) => {
-          if (res != null) {
-            console.log(res);
-            contact.reset(res.contact);
-            personal.reset(res.personal);
-            setIncome(res.income);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  };
+  useEffect(() => {
+    if (
+      (router.isReady && typeof code === "string") ||
+      code instanceof String
+    ) {
+      get_info();
     }
-  });
+  }, [router.isReady]);
 
   const redirect = async () => {
     const response = await fetch(
