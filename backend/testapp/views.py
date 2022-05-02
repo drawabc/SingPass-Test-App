@@ -21,8 +21,8 @@ def get_authorised_url(request):
 def get_info(request):
     try:
         req = json.loads(request.body)
-        if (not req["code"]):
-            return JsonResponse({"message": "Code is empty"}, status=404)
+        if ("code" not in req):
+            raise Exception("Code not found")
         code = req.get("code", "")
         resp = client.get_access_token(code)
         access_token = resp.get("access_token", "")
@@ -31,6 +31,6 @@ def get_info(request):
         resp = client.get_person(uinfin=uinfin, access_token=access_token)
         decrypted = get_decrypted_person_data(resp)
         return JsonResponse(serializer.serialize(decrypted))
-    except:
-        #print(e)
+    except Exception as e:
+        print(e)
         return JsonResponse(serializer.serialize({}), status=404)
