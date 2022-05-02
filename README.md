@@ -22,4 +22,4 @@ For frontend:
 ```yarn dev```
 
 
-Both apps are still in development mode, production environment has not been built yet
+Both apps are still in development mode
